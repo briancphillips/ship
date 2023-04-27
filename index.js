@@ -1,8 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 240 * 2;
-canvas.height = 320 * 2;
+canvas.width = 224 * 2;
+canvas.height = 288 * 2;
 
 class KeyboardState {
   constructor() {
