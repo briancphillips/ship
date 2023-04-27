@@ -106,24 +106,20 @@ class Ship {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx.fillStyle = "blue";
     //ctx.fillRect(this.x, this.y, 100, 50);
+    if (this.x < 0) {
+      this.x = 0;
+    }
+    if (this.x + 32 > canvas.width) {
+      this.x = canvas.width - 32;
+    }
     sprites.draw("ship", ctx, this.x, this.y);
   }
 
   update(dt) {
+    console.log(this.x, this.vel);
     //console.log("Delta", dt);
-    if (this.x + 32 > canvas.width) {
-      this.x = canvas.width - 32;
-      this.vel = 0;
-      //this.vel > 6 ? (this.vel -= 1) : (this.vel = 1);
-    }
 
-    if (this.x < 0) {
-      this.x = 0;
-      this.vel = 0;
-      //this.x = canvas.width;
-      //this.vel > 6 ? (this.vel -= 1) : (this.vel = 1);
-    }
-
+    console.log(this.x, this.vel);
     this.x += this.vel * dt;
   }
 }
