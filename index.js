@@ -4,10 +4,6 @@ const ctx = canvas.getContext("2d");
 canvas.width = 240 * 2;
 canvas.height = 320 * 2;
 
-const SHIP_SPEED = 300;
-const PRESSED = 1;
-const RELEASED = 0;
-
 class KeyboardState {
   constructor() {
     // Holds the current state of a given key
@@ -26,6 +22,7 @@ class KeyboardState {
 
     if (!this.keyMap.has(keyCode)) {
       // Did not have key mapped.
+      console.log(keyCode);
       return;
     }
 
@@ -52,7 +49,6 @@ class KeyboardState {
   }
 }
 
-const input = new KeyboardState();
 class SpriteSheet {
   constructor(image, w = 32, h = 32) {
     this.image = image;
@@ -162,15 +158,20 @@ class Game {
     }
   }
 }
+const SHIP_SPEED = 300;
+const PRESSED = 1;
+const RELEASED = 0;
+const input = new KeyboardState();
+
 let sprites;
 let ship = new Ship();
 let game = new Game();
 
 input.addMapping(37, (keyState) => {
   if (keyState) {
-    ship.vel += -SHIP_SPEED;
+    ship.vel -= SHIP_SPEED;
   } else {
-    ship.vel = 0;
+    ship.vel += SHIP_SPEED;
   }
 });
 
@@ -178,7 +179,7 @@ input.addMapping(39, (keyState) => {
   if (keyState) {
     ship.vel += SHIP_SPEED;
   } else {
-    ship.vel = 0;
+    ship.vel -= SHIP_SPEED;
   }
 });
 
