@@ -9,7 +9,7 @@ export default class Ship {
     this.vel = 0;
     this.ctx = ctx;
 
-    loadImage("./img/galaga2.png").then((image) => {
+    loadImage("./img/galaga1111.png").then((image) => {
       sprites = new SpriteSheet(image);
       sprites.define("ship", 6, 0);
       game.start();
@@ -27,10 +27,10 @@ export default class Ship {
   }
 
   update(dt) {
-    console.log(this.x, this.vel);
+    //console.log(this.x, this.vel);
     //console.log("Delta", dt);
 
-    console.log(this.x, this.vel);
+    //console.log(this.x, this.vel);
     this.x += this.vel * dt;
   }
 }
