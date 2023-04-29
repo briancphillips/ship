@@ -1,3 +1,4 @@
+import { ship, bullet } from "./../index.js";
 export default class Game {
   constructor() {
     this.accumulator = 0;
@@ -9,6 +10,7 @@ export default class Game {
         const diff = millis - lastTime;
         this.update(diff / 1000);
         ship.draw();
+        bullet.draw();
       }
       lastTime = millis;
       requestAnimationFrame(this._frameCallback);
@@ -24,6 +26,7 @@ export default class Game {
     this.accumulator += dt;
     while (this.accumulator > this.step) {
       ship.update(this.step);
+      bullet.update(this.step);
       this.accumulator -= this.step;
     }
   }

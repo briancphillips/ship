@@ -1,17 +1,18 @@
+import { game } from "../index.js";
+import { ctx } from "./globals.js";
 import { loadImage } from "./utils.js";
 import SpriteSheet from "./SpriteSheet.js";
-let sprites;
 
 export default class Ship {
-  constructor(game, ctx) {
+  constructor() {
     this.x = canvas.width / 2 - 16;
     this.y = canvas.height - 64;
     this.vel = 0;
     this.ctx = ctx;
 
     loadImage("./img/galaga1111.png").then((image) => {
-      sprites = new SpriteSheet(image);
-      sprites.define("ship", 6, 0);
+      this.sprites = new SpriteSheet(image);
+      this.sprites.define("ship", 6, 0);
       game.start();
     });
   }
@@ -23,7 +24,7 @@ export default class Ship {
     if (this.x + 32 > canvas.width) {
       this.x = canvas.width - 32;
     }
-    sprites.draw("ship", this.ctx, this.x, this.y);
+    this.sprites.draw("ship", this.ctx, this.x, this.y);
   }
 
   update(dt) {
