@@ -9,3 +9,6 @@ canvas.height = SCREEN_H * SCREEN_SCALE;
 
 export let SHIP_SPEED = 300;
 export let BULLET_SPEED = -1800;
+export let BULLETS_MAX = 20;
+export let BULLETS_MAX_RAPID = 2;
+export let bullets = [];

@@ -1,5 +1,6 @@
 import { game } from "../index.js";
-import { ctx } from "./globals.js";
+import { input } from "./Input.js";
+import { bullets, ctx } from "./globals.js";
 import { loadImage } from "./utils.js";
 import SpriteSheet from "./SpriteSheet.js";
 import { ship } from "./../index.js";
@@ -19,16 +20,28 @@ export default class Bullet {
 
   draw() {
     //this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     if (this.y < -200) {
+      //bullets.splice(bullets.length - 1, 1);
       this.y = ship.y - 30;
       this.vel.y = 0;
     }
-    if (this.vel.y === 0) this.x = ship.x;
-    this.sprites.draw("bullet", this.ctx, this.x, this.y);
+    if (!this.vel.y) this.x = ship.x;
+    if (this.vel.y) this.sprites.draw("bullet", this.ctx, this.x, this.y);
+    //console.log(this.vel.y);
   }
 
   update(dt) {
     this.x += this.vel.x * dt;
     this.y += this.vel.y * dt;
+
+    if (game.coolDown) {
+      game.coolDownTime -= 1;
+      if (game.coolDownTime <= 0) {
+        game.coolDown = false;
+        game.coolDownTime = 2000;
+      }
+    }
+    //console.log("CD", game.coolDown, "CDT", game.coolDownTime);
   }
 }
