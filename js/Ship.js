@@ -1,5 +1,5 @@
-import { game } from "../index.js";
-import { ctx } from "./globals.js";
+import { game, playAudio } from "../index.js";
+import { BULLETS_MAX, ctx } from "./globals.js";
 import { loadImage } from "./utils.js";
 import SpriteSheet from "./SpriteSheet.js";
 
@@ -9,12 +9,17 @@ export default class Ship {
     this.y = canvas.height - 64;
     this.vel = 0;
     this.ctx = ctx;
+    this.bullets = BULLETS_MAX;
 
     loadImage("./img/galaga1111.png").then((image) => {
       this.sprites = new SpriteSheet(image);
       this.sprites.define("ship", 6, 0);
       game.start();
     });
+  }
+
+  fire() {
+    playAudio();
   }
   draw() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);

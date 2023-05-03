@@ -11,4 +11,5 @@ export let SHIP_SPEED = 300;
 export let BULLET_SPEED = -1800;
 export let BULLETS_MAX = 20;
 export let BULLETS_MAX_RAPID = 2;
+export let COOL_DOWN_TIME = 50 * (1 / 60);
 export let bullets = [];

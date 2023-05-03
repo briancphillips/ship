@@ -1,6 +1,6 @@
 import { game } from "../index.js";
 import { input } from "./Input.js";
-import { bullets, ctx } from "./globals.js";
+import { bullets, ctx, COOL_DOWN_TIME } from "./globals.js";
 import { loadImage } from "./utils.js";
 import SpriteSheet from "./SpriteSheet.js";
 import { ship } from "./../index.js";
@@ -22,7 +22,8 @@ export default class Bullet {
     //this.ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (this.y < -200) {
-      //bullets.splice(bullets.length - 1, 1);
+      bullets.splice(bullets.length - 1, 1);
+      console.log("Bullets Left", bullets.length);
       this.y = ship.y - 30;
       this.vel.y = 0;
     }
@@ -36,10 +37,11 @@ export default class Bullet {
     this.y += this.vel.y * dt;
 
     if (game.coolDown) {
-      game.coolDownTime -= 1;
+      game.coolDownTime -= dt;
+      //console.log(game.coolDownTime);
       if (game.coolDownTime <= 0) {
         game.coolDown = false;
-        game.coolDownTime = 2000;
+        game.coolDownTime = COOL_DOWN_TIME;
       }
     }
     //console.log("CD", game.coolDown, "CDT", game.coolDownTime);

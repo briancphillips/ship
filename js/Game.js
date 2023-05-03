@@ -1,4 +1,4 @@
-import { bullets, BULLETS_MAX } from "./globals.js";
+import { bullets, BULLETS_MAX, COOL_DOWN_TIME } from "./globals.js";
 import { ship } from "./../index.js";
 export default class Game {
   constructor() {
@@ -6,7 +6,7 @@ export default class Game {
     this.step = 1 / 320;
 
     this.coolDown = false;
-    this.coolDownTime = 2000;
+    this.coolDownTime = COOL_DOWN_TIME;
 
     let lastTime = null;
     this._frameCallback = (millis) => {

@@ -7,3 +7,15 @@ export function loadImage(url) {
     image.src = url;
   });
 }
+
+export function createAudioLoader(ctx) {
+  return function loadAudio(url) {
+    return fetch(url)
+      .then((audio) => {
+        return audio.arrayBuffer();
+      })
+      .then((audioBuffer) => {
+        return ctx.decodeAudioData(audioBuffer);
+      });
+  };
+}
