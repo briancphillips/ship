@@ -1,5 +1,6 @@
 import { game, playAudio } from "../index.js";
-import { BULLETS_MAX, ctx } from "./globals.js";
+import { bullets, BULLETS_MAX, ctx } from "./globals.js";
+import Bullet from "./Bullet.js";
 import { loadImage } from "./utils.js";
 import SpriteSheet from "./SpriteSheet.js";
 
@@ -16,6 +17,13 @@ export default class Ship {
       this.sprites.define("ship", 6, 0);
       game.start();
     });
+  }
+
+  init() {
+    for (let i = 0; i < BULLETS_MAX; i++) {
+      bullets.push(new Bullet());
+    }
+    window.bullets = bullets;
   }
 
   fire() {

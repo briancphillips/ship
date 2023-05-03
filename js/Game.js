@@ -24,6 +24,7 @@ export default class Game {
   }
 
   start() {
+    ship.init();
     requestAnimationFrame(this._frameCallback);
   }
 
