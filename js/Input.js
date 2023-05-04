@@ -34,9 +34,9 @@ input.addMapping(32, (keyState) => {
   if (keyState) {
     if (game.coolDown) return;
     if (bullets[shots]) bullets[shots].vel.y = BULLET_SPEED;
-    console.log(bullets.length);
+    //console.log(bullets.length);
 
-    shots++;
+    //shots++;
 
     // if (shots > 1) {
     //   shots = 0;
