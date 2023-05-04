@@ -6,8 +6,10 @@ import Ship from "./js/Ship.js";
 import Game from "./js/Game.js";
 
 export let game = new Game();
+window.game = game;
 export let ship = new Ship();
 
+//TODO: REFACTOR BELOW
 export let playAudio = () => {
   if (!bullets.length) return;
   const audioContext = new AudioContext();

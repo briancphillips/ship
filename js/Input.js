@@ -33,18 +33,19 @@ input.addMapping(39, (keyState) => {
 input.addMapping(32, (keyState) => {
   if (keyState) {
     if (game.coolDown) return;
-    ship.fire();
     if (bullets[shots]) bullets[shots].vel.y = BULLET_SPEED;
     console.log(bullets.length);
 
     shots++;
 
-    if (shots > 1) {
-      shots = 0;
-      game.coolDown = true;
-      game.coolDownTime = COOL_DOWN_TIME;
-    }
-    if (shots < 2) playAudio();
+    // if (shots > 1) {
+    //   shots = 0;
+    //   game.coolDown = true;
+    //   game.coolDownTime = COOL_DOWN_TIME;
+    // }
+
+    ship.fire();
+    //if (shots < 2) playAudio();
     //console.log("spaced");
   }
 });

@@ -1,6 +1,6 @@
 import { game } from "../index.js";
 import { input } from "./Input.js";
-import { bullets, ctx, COOL_DOWN_TIME } from "./globals.js";
+import { bullets, ctx, COOL_DOWN_TIME, sprites } from "./globals.js";
 import { loadImage } from "./utils.js";
 import SpriteSheet from "./SpriteSheet.js";
 import { ship } from "./../index.js";
@@ -11,24 +11,20 @@ export default class Bullet {
     this.y = ship.y - 30;
     this.vel = { x: 0, y: 0 };
     this.ctx = ctx;
-
-    loadImage("./img/galaga1111.png").then((image) => {
-      this.sprites = new SpriteSheet(image);
-      this.sprites.define("bullet", 1, 22);
-    });
   }
 
-  draw() {
+  draw(i) {
     //this.ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (this.y < -200) {
-      bullets.splice(bullets.length - 1, 1);
+    if (bullets[i].y < -200) {
+      bullets.splice(bullets[i], 1);
       console.log("Bullets Left", bullets.length);
-      this.y = ship.y - 30;
-      this.vel.y = 0;
+      return;
     }
-    if (!this.vel.y) this.x = ship.x;
-    if (this.vel.y) this.sprites.draw("bullet", this.ctx, this.x, this.y);
+    if (!bullets[i].vel.y) bullets[i].x = ship.x;
+    if (bullets[i].vel.y)
+      game.sprites.draw("bullet", bullets[i].ctx, bullets[i].x, bullets[i].y);
+
     //console.log(this.vel.y);
   }
 

@@ -7,6 +7,7 @@ const SCREEN_SCALE = 2;
 canvas.width = SCREEN_W * SCREEN_SCALE;
 canvas.height = SCREEN_H * SCREEN_SCALE;
 
+export let sprites = {};
 export let SHIP_SPEED = 300;
 export let BULLET_SPEED = -1800;
 export let BULLETS_MAX = 20;
