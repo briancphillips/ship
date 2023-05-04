@@ -11,19 +11,20 @@ export default class Bullet {
     this.y = ship.y - 30;
     this.vel = { x: 0, y: 0 };
     this.ctx = ctx;
+    this.free = true;
   }
 
-  draw(i) {
+  draw() {
     //this.ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (bullets[i].y < -200) {
-      bullets.splice(bullets[i], 1);
+    if (this.y < -200) {
+      //bullets.splice(this, 1);
+      this.free = true;
       //console.log("Bullets Left", bullets.length);
-      return;
+      //return;
     }
-    if (!bullets[i].vel.y) bullets[i].x = ship.x;
-    if (bullets[i].vel.y)
-      game.sprites.draw("bullet", bullets[i].ctx, bullets[i].x, bullets[i].y);
+    if (!this.vel.y) this.x = ship.x;
+    if (this.vel.y) game.sprites.draw("bullet", this.ctx, this.x, this.y);
 
     //console.log(this.vel.y);
   }

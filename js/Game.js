@@ -22,9 +22,9 @@ export default class Game {
         this.update(diff / 1000);
         ship.draw();
 
-        for (let i = bullets.length - 1; i >= 0; i--) {
-          bullets[i].draw(i);
-        }
+        bullets.forEach((bullet) => {
+          bullet.draw();
+        });
       }
       lastTime = millis;
       requestAnimationFrame(this._frameCallback);
