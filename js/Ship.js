@@ -10,7 +10,6 @@ export default class Ship {
     this.y = canvas.height - 64;
     this.vel = 0;
     this.ctx = ctx;
-    this.bullets = BULLETS_MAX;
 
     loadImage("./img/galaga1111.png").then((image) => {
       this.sprites = new SpriteSheet(image);
@@ -41,10 +40,6 @@ export default class Ship {
   }
 
   update(dt) {
-    //console.log(this.x, this.vel);
-    //console.log("Delta", dt);
-
-    //console.log(this.x, this.vel);
     this.x += this.vel * dt;
   }
 }

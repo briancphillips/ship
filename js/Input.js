@@ -32,29 +32,13 @@ input.addMapping(39, (keyState) => {
 
 input.addMapping(32, (keyState) => {
   if (keyState) {
-    if (game.coolDown) return;
-    bullets.every((bullet) => {
-      if (bullet.free) {
-        bullet.free = false;
-        bullet.vel.y = BULLET_SPEED;
-        ship.fire();
-        return false;
-      }
-      return true;
-    });
-
-    //console.log(bullets.length);
+    bullets[[shots]].free = false;
+    bullets[[shots]].vel.y = BULLET_SPEED;
 
     shots++;
-    console.log(shots);
-    // if (shots > 1) {
-    //   shots = 0;
-    //   game.coolDown = true;
-    //   game.coolDownTime = COOL_DOWN_TIME;
-    // }
+    if (shots % BULLETS_MAX === 0) shots = 0;
 
-    //if (shots < 2) playAudio();
-    //console.log("spaced");
+    ship.fire();
   }
 });
 

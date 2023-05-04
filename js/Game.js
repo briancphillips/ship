@@ -1,14 +1,11 @@
 import SpriteSheet from "./SpriteSheet.js";
-import { bullets, BULLETS_MAX, COOL_DOWN_TIME, sprites } from "./globals.js";
+import { bullets } from "./globals.js";
 import { ship } from "./../index.js";
 import { loadImage } from "./utils.js";
 export default class Game {
   constructor() {
     this.accumulator = 0;
     this.step = 1 / 320;
-
-    this.coolDown = false;
-    this.coolDownTime = COOL_DOWN_TIME;
 
     loadImage("./img/galaga1111.png").then((image) => {
       this.sprites = new SpriteSheet(image);
